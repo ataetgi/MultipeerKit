@@ -11,19 +11,13 @@ public struct MultipeerError: LocalizedError {
 }
 
 final class MultipeerConnection: NSObject, MultipeerProtocol {
-
-    enum Mode: Int, CaseIterable {
-        case receiver
-        case transmitter
-    }
-
     private let log = MultipeerKit.log(for: MultipeerConnection.self)
 
-    let modes: [Mode]
+    let modes: [ConnectivityMode]
     let configuration: MultipeerConfiguration
     let me: MCPeerID
 
-    init(modes: [Mode] = Mode.allCases, configuration: MultipeerConfiguration = .default) {
+    init(modes: [ConnectivityMode] = ConnectivityMode.allCases, configuration: MultipeerConfiguration = .default) {
         self.modes = modes
         self.configuration = configuration
         self.me = MCPeerID.fetchOrCreate(with: configuration)
