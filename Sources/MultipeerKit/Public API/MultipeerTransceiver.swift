@@ -49,7 +49,7 @@ public final class MultipeerTransceiver {
     /// - Parameter configuration: The configuration, uses the default configuration if none specified.
     public init(modes: [ConnectivityMode] = ConnectivityMode.allCases, configuration: MultipeerConfiguration = .default) {
         self.connection = MultipeerConnection(
-            modes: ConnectivityMode.allCases,
+            modes: modes,
             configuration: configuration
         )
 
